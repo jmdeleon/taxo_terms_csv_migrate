@@ -1,0 +1,3 @@
+"id","title_fr","title_en","parent_id"
+"55001","Automobile","Car",""
+"55002","Camion","Truck","55001"

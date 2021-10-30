@@ -1,0 +1,44 @@
+id: event_type_fr
+label: Event Type French
+migration_group: default
+source:
+  plugin: csv
+  path: 'modules/custom/op_terms_csv_migrate/sources/data.csv'
+  header_row_count: 1
+  ids: [ id ]
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: event_type
+  translations: true
+process:
+  vid:
+    plugin: default_value
+    default_value: event_type
+  status:
+    plugin: default_value
+    default_value: 1
+  weight:
+    plugin: default_value
+    default_value: 1
+  name:
+    plugin: get
+    source: title_fr
+    language: fr
+  langcode:
+    plugin: default_value
+    default_value: fr
+  tid:
+    plugin: migration_lookup
+    migration: event_type
+    source: id
+  content_translation_source:
+    plugin: default_value
+    default_value: en
+  parent:
+    plugin: get
+    source: parent_id
+
+# Absolutely necessary if you don't want an error.
+migration_dependencies:
+  required: [ event_type ]
+  optional: []

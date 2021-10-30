@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Installation hooks for the taxo_terms_csv_migrate module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function taxo_terms_csv_migrate_uninstall() {
+  Drupal::configFactory()->getEditable('migrate_plus.migration.event_type_fr')->delete();
+  Drupal::configFactory()->getEditable('migrate_plus.migration.event_type')->delete();
+}
